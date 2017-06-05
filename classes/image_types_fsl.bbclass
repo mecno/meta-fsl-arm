@@ -156,6 +156,7 @@ generate_imx_sdcard () {
 	mkfs.vfat -n "${BOOTDD_VOLUME_ID}" -S 512 -F 32 -C ${WORKDIR}/boot.img $BOOT_BLOCKS
 
 	mcopy -i ${WORKDIR}/boot.img -s ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGETYPE}-${MACHINE}.bin ::/${KERNEL_IMAGETYPE}
+	mcopy -i ${WORKDIR}/boot.img -s ${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.${UBOOT_SUFFIX_SDCARD}  ::/u-boot.img
 
 	# Copy boot scripts
 	for item in ${BOOT_SCRIPTS}; do
